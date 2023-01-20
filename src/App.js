@@ -9,7 +9,17 @@ const Button = (props) => {
 }
 
   const Statistics = (props) => {
-    console.log(props)
+    //console.log(props)
+    if(props.Statistics[0]===0 && props.Statistics[1]===0 && props.Statistics[2]===0) {
+      return(
+        <div>
+          No feedback given
+        </div>
+      )
+    }
+  
+    {
+    //console.log(props)
         const all = props.Statistics[0] + props.Statistics[1] + props.Statistics[2]
         const average = (props.Statistics[0]-props.Statistics[2])/(props.Statistics[0] + props.Statistics[1] + props.Statistics[2])
         const positive = props.Statistics[0]/all
@@ -23,7 +33,7 @@ const Button = (props) => {
         </div>
         )
 }
-
+  }
 
 const App = () => {
   const [good, setGood] = useState(0)
