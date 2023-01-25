@@ -41,24 +41,45 @@ const StatisticsLine = (props) => {
   if (props.text ==="all"){  
   return(
   <div>
+  <table>
+  <tbody>
+  <tr>
+  <td>
   {props.text} {all}
-   <br></br>
+  </td>
+  </tr>
+  </tbody>
+  </table>
   </div>
   )
   }
   if (props.text ==="average"){  
     return(
     <div>
+    <table>
+    <tbody>
+    <tr>
+    <td>
     {props.text} {average}
-     <br></br>
+    </td>
+    </tr>
+    </tbody> 
+    </table>    
     </div>
     )
     }
   if (props.text ==="positive"){  
     return(
     <div>
+    <table>
+    <tbody>
+    <tr>
+    <td>
     {props.text} {positive}
-      <br></br>
+    </td>
+    </tr>
+    </tbody>
+    </table>
     </div>
     )
     }
@@ -96,11 +117,19 @@ const App = () => {
         bad
       </button>
       <h2>Statistics</h2>
-         good {good}
-         <br></br>
-         neutral {neutral}
-         <br></br>
-         bad {bad}
+      <table>
+      <tbody>
+         <tr>
+          <td>good {good}</td>
+          </tr>
+         <tr>
+         <td>neutral {neutral}</td>
+         </tr>
+         <tr>
+         <td>bad {bad}</td>
+         </tr>
+      </tbody>
+      </table>
       <Statistics Statistics={[good, neutral, bad]}/>
      </div>  
   )
