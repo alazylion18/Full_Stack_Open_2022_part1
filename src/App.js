@@ -20,20 +20,50 @@ const Button = (props) => {
   
     {
     //console.log(props)
-        const all = props.Statistics[0] + props.Statistics[1] + props.Statistics[2]
-        const average = (props.Statistics[0]-props.Statistics[2])/(props.Statistics[0] + props.Statistics[1] + props.Statistics[2])
-        const positive = props.Statistics[0]/all
+    const all = props.Statistics[0] + props.Statistics[1] + props.Statistics[2]
+    const average = (props.Statistics[0]-props.Statistics[2])/(props.Statistics[0] + props.Statistics[1] + props.Statistics[2])
+    const positive = props.Statistics[0]/all
         return(
           <div>
-        all {all}
-         <br></br>
-        average {average}
-         <br></br>
-        positive {positive}
-        </div>
+          <StatisticsLine text="all" value={props} />
+          <StatisticsLine text="average" value={props} />
+          <StatisticsLine text="positive" value={props}/>
+          </div>
         )
+    }
 }
+
+const StatisticsLine = (props) => {
+  //console.log(props.text)
+  const all = props.value.Statistics[0] + props.value.Statistics[1] + props.value.Statistics[2]
+  const average = (props.value.Statistics[0]-props.value.Statistics[2])/(props.value.Statistics[0] + props.value.Statistics[1] + props.value.Statistics[2])
+  const positive = props.value.Statistics[0]/all
+  if (props.text ==="all"){  
+  return(
+  <div>
+  {props.text} {all}
+   <br></br>
+  </div>
+  )
   }
+  if (props.text ==="average"){  
+    return(
+    <div>
+    {props.text} {average}
+     <br></br>
+    </div>
+    )
+    }
+  if (props.text ==="positive"){  
+    return(
+    <div>
+    {props.text} {positive}
+      <br></br>
+    </div>
+    )
+    }
+}
+
 
 const App = () => {
   const [good, setGood] = useState(0)
@@ -66,15 +96,11 @@ const App = () => {
         bad
       </button>
       <h2>Statistics</h2>
-      <p>
          good {good}
-       </p>
-       <p>
+         <br></br>
          neutral {neutral}
-       </p>
-       <p>
+         <br></br>
          bad {bad}
-       </p>
       <Statistics Statistics={[good, neutral, bad]}/>
      </div>  
   )
